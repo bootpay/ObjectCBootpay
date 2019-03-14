@@ -1,0 +1,6 @@
+framework module Pods_ObjectCBootpay {
+  umbrella header "Pods-ObjectCBootpay-umbrella.h"
+
+  export *
+  module * { export * }
+}

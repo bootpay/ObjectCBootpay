@@ -13,6 +13,7 @@
 		81D435CD2239EA22002EF316 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D435CC2239EA22002EF316 /* Assets.xcassets */; };
 		81D435D02239EA22002EF316 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D435CE2239EA22002EF316 /* LaunchScreen.storyboard */; };
 		81D435D32239EA22002EF316 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D435D22239EA22002EF316 /* main.m */; };
+		81F5B3F52239F7DA00CF81DD /* empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F5B3F42239F7DA00CF81DD /* empty.swift */; };
 		EC91222A6F7D71DFE2DC517F /* Pods_ObjectCBootpay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3750C86B818B8042CEC411 /* Pods_ObjectCBootpay.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,8 @@
 		81D435CF2239EA22002EF316 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D435D12239EA22002EF316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81D435D22239EA22002EF316 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		81F5B3F32239F7DA00CF81DD /* ObjectCBootpay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjectCBootpay-Bridging-Header.h"; sourceTree = "<group>"; };
+		81F5B3F42239F7DA00CF81DD /* empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.swift; sourceTree = "<group>"; };
 		EB3750C86B818B8042CEC411 /* Pods_ObjectCBootpay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectCBootpay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +94,8 @@
 				81D435CE2239EA22002EF316 /* LaunchScreen.storyboard */,
 				81D435D12239EA22002EF316 /* Info.plist */,
 				81D435D22239EA22002EF316 /* main.m */,
+				81F5B3F42239F7DA00CF81DD /* empty.swift */,
+				81F5B3F32239F7DA00CF81DD /* ObjectCBootpay-Bridging-Header.h */,
 			);
 			path = ObjectCBootpay;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				TargetAttributes = {
 					81D435BF2239EA21002EF316 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -207,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D435C82239EA21002EF316 /* ViewController.m in Sources */,
+				81F5B3F52239F7DA00CF81DD /* empty.swift in Sources */,
 				81D435D32239EA22002EF316 /* main.m in Sources */,
 				81D435C52239EA21002EF316 /* AppDelegate.m in Sources */,
 			);
@@ -351,7 +358,10 @@
 			baseConfigurationReference = 273723C026E1D74E70A0C569 /* Pods-ObjectCBootpay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3CYBZ4B4T4;
 				INFOPLIST_FILE = ObjectCBootpay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -359,6 +369,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.bootpay.ObjectCBootpay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjectCBootpay/ObjectCBootpay-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -368,7 +381,10 @@
 			baseConfigurationReference = 29628BD044ACA2BFE712F702 /* Pods-ObjectCBootpay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3CYBZ4B4T4;
 				INFOPLIST_FILE = ObjectCBootpay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,6 +392,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.bootpay.ObjectCBootpay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjectCBootpay/ObjectCBootpay-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

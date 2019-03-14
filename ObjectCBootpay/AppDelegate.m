@@ -7,11 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "SwiftyBootpay-Swift.h"
 
 @interface AppDelegate ()
-
 @end
-
 @implementation AppDelegate
 
 
@@ -25,19 +24,15 @@
     [[BootpayAnalytics sharedInstance] sessionActive: false];
 }
 
-
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 }
-
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[BootpayAnalytics sharedInstance] sessionActive: true];
 }
-
 
 - (void)applicationWillTerminate:(UIApplication *)application { 
 }

@@ -54,7 +54,7 @@
 }
 
 - (void) presentBootpayController {
-    BootpayController *vc = [[BootpayController alloc] init];
+    vc = [[BootpayController alloc] init];
 
     BootpayItem *item1 = [[BootpayItem alloc] init];
     item1.item_name = @"미\"키's 마우스";
@@ -88,7 +88,7 @@
     vc.name = @"블링\"블링's 마스카라";
     vc.order_id = @"1234_1234_124";
     vc.name = @"블링\"블링's 마스카라";
-    vc.pg = @"nice";
+    vc.pg = @"danal";
     vc.method = @"card";
     vc.params = customParams;
     vc.user_info = userInfo;
@@ -110,10 +110,20 @@
 
 - (void)onClose {
     NSLog(@"onClose");
+    [vc dismiss];
 }
 
 - (void)onConfirm:(NSDictionary<NSString *,id> * _Nonnull)data {
     NSLog(@"onConfirm %@", data);
+    
+    // 재고검사를 하는 로직을 넣으시면 됩니다
+    
+    //  재고가 있어, 결제를 원할 경우
+    if (true) {
+        [vc transactionConfirm: data];
+    } else {
+        [vc removePaymentWindow];
+    }
 }
 
 - (void)onDone:(NSDictionary<NSString *,id> * _Nonnull)data {

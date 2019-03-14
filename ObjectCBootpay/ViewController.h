@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SwiftyBootpay-Swift.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    BootpayController *vc;
+}
 
 
 @end

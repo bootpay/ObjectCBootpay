@@ -32,7 +32,6 @@
     
 //    NSString *url = @"https://g-cdn.bootpay.co.kr/test/payment/index.html";
     NSString *url = @"https://test-shop.bootpay.co.kr";
-    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: url]];
     [wkWebView loadRequest:request];
 }
@@ -45,18 +44,9 @@
     [self startTrace]; // 통계 - 페이지 방문
 }
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"2. didFinishNavigation");
-}
-
-- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"3. didFailNavigation");
-}
-
 - (void) webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSString *url = navigationAction.request.URL.absoluteString;
-    NSString *scheme = navigationAction.request.URL.scheme;
-    NSLog(@"url = %@", url);
+    NSString *scheme = navigationAction.request.URL.scheme; 
     
     if ([self isiTunesURL: url]) {
         [[UIApplication sharedApplication] openURL:navigationAction.request.URL options: @{} completionHandler: nil];

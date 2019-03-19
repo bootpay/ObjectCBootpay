@@ -13,6 +13,8 @@
 		81D435CD2239EA22002EF316 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D435CC2239EA22002EF316 /* Assets.xcassets */; };
 		81D435D02239EA22002EF316 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D435CE2239EA22002EF316 /* LaunchScreen.storyboard */; };
 		81D435D32239EA22002EF316 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D435D22239EA22002EF316 /* main.m */; };
+		81D6DE562240B82E00D885E2 /* NativeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D6DE552240B82E00D885E2 /* NativeController.m */; };
+		81D6DE592240B8D400D885E2 /* WebappController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D6DE582240B8D400D885E2 /* WebappController.m */; };
 		81F5B3F52239F7DA00CF81DD /* empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F5B3F42239F7DA00CF81DD /* empty.swift */; };
 		EC91222A6F7D71DFE2DC517F /* Pods_ObjectCBootpay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3750C86B818B8042CEC411 /* Pods_ObjectCBootpay.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,10 @@
 		81D435CF2239EA22002EF316 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81D435D12239EA22002EF316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81D435D22239EA22002EF316 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		81D6DE542240B82E00D885E2 /* NativeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeController.h; sourceTree = "<group>"; };
+		81D6DE552240B82E00D885E2 /* NativeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeController.m; sourceTree = "<group>"; };
+		81D6DE572240B8D400D885E2 /* WebappController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebappController.h; sourceTree = "<group>"; };
+		81D6DE582240B8D400D885E2 /* WebappController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebappController.m; sourceTree = "<group>"; };
 		81F5B3F32239F7DA00CF81DD /* ObjectCBootpay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjectCBootpay-Bridging-Header.h"; sourceTree = "<group>"; };
 		81F5B3F42239F7DA00CF81DD /* empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.swift; sourceTree = "<group>"; };
 		EB3750C86B818B8042CEC411 /* Pods_ObjectCBootpay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectCBootpay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +102,10 @@
 				81D435D22239EA22002EF316 /* main.m */,
 				81F5B3F42239F7DA00CF81DD /* empty.swift */,
 				81F5B3F32239F7DA00CF81DD /* ObjectCBootpay-Bridging-Header.h */,
+				81D6DE542240B82E00D885E2 /* NativeController.h */,
+				81D6DE552240B82E00D885E2 /* NativeController.m */,
+				81D6DE572240B8D400D885E2 /* WebappController.h */,
+				81D6DE582240B8D400D885E2 /* WebappController.m */,
 			);
 			path = ObjectCBootpay;
 			sourceTree = "<group>";
@@ -212,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D6DE592240B8D400D885E2 /* WebappController.m in Sources */,
+				81D6DE562240B82E00D885E2 /* NativeController.m in Sources */,
 				81D435C82239EA21002EF316 /* ViewController.m in Sources */,
 				81F5B3F52239F7DA00CF81DD /* empty.swift in Sources */,
 				81D435D32239EA22002EF316 /* main.m in Sources */,

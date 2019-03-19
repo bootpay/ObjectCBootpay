@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SwiftyBootpay-Swift.h"
 
-@interface ViewController : UIViewController {
-    BootpayController *vc;
-}
-
+@interface ViewController : UIViewController 
 
 @end
 

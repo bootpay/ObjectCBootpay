@@ -15,13 +15,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[BootpayAnalytics sharedInstance] appLaunch: @"5a52cc39396fa6449880c0f0"];
+    [[Bootpay sharedInstance] appLaunch: @"5a52cc39396fa6449880c0f0"];
     return YES;
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [[BootpayAnalytics sharedInstance] sessionActive: false];
+    [[Bootpay sharedInstance] sessionActive: false];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -31,7 +31,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[BootpayAnalytics sharedInstance] sessionActive: true];
+    [[Bootpay sharedInstance] sessionActive: true];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application { 

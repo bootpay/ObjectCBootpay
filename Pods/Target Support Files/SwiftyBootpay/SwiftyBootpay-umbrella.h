@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "SwiftyBootpay-ObjectC-Bridge.h"
 
 FOUNDATION_EXPORT double SwiftyBootpayVersionNumber;
 FOUNDATION_EXPORT const unsigned char SwiftyBootpayVersionString[];

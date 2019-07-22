@@ -24,7 +24,7 @@
 
 
 - (void) sendAnaylticsUserLogin {
-    BootpayUser *bu = [[BootpayAnalytics sharedInstance] user];
+    BootpayUser *bu = [[Bootpay sharedInstance] user];
     bu.id = @"testUser";
     bu.username = @"홍\"길'동";
     bu.email = @"testUser@gmail.com"; // user email
@@ -33,7 +33,7 @@
     bu.phone = @"01040334678";
     bu.area = @"서울";
     
-    [[BootpayAnalytics sharedInstance] postLogin];
+    [BootpayAnalytics postLogin];
 }
 
 - (void) sendAnaylticsPageCall {
@@ -51,11 +51,11 @@
     item2.cat3 = @"블라우스";
     
     NSArray *items = [NSArray arrayWithObjects: item1, item2, nil];
-    [[BootpayAnalytics sharedInstance] start: @"ItemViewController" :@"ItemDetail" items: items];
+    [BootpayAnalytics start: @"ItemViewController" :@"ItemDetail" items: items];
 }
 
 - (void) presentBootpayController {
-    vc = [[BootpayController alloc] init];
+//    vc = [[BootpayController alloc] init];
     
     BootpayItem *item1 = [[BootpayItem alloc] init];
     item1.item_name = @"미\"키's 마우스"; // 주문정보에 담길 상품명
@@ -78,29 +78,36 @@
     [customParams setValue: @"value34" forKey: @"callbackParam2"];
     
     // 구매자 정보
-    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
-    [userInfo setValue: @"사용자 이름" forKey: @"username"];
-    [userInfo setValue: @"user1234@gmail.com" forKey: @"email"];
-    [userInfo setValue: @"사용자 주소@gmail.com" forKey: @"addr"];
-    [userInfo setValue: @"010-1234-4567" forKey: @"phone"];
+    BootpayUser *bootUser = [[BootpayUser alloc] init];
+    bootUser.username = @"사용자 이름";
+    bootUser.email = @"user1234@gmail.com";
+    bootUser.area = @"서울";
+    bootUser.phone = @"010-1234-5678";
     
-    [vc addItem: item1]; //배열 가능
-    [vc addItem: item2]; //배열 가능
+    BootpayRequest *request = [[BootpayRequest alloc] init];
+    request.price = 1000;
+    request.name = @"블링블링's 마스카라";
+    request.order_id = @"1234_1234_1234";
+    request.params = customParams;
+//    request.pg = BootpayMethod
+    request.pg = BootpayPG.DANAL;
+    request.method = BootpayMethod.CARD;
+    request.ux = BootpayUX.PG_DIALOG;
     
-    // 주문정보 - 실제 결제창에 반영되는 정보
-    vc.price = 1000; // 결제할 금액
-    vc.name = @"블링\"블링's 마스카라"; // 결제할 상품명
-    vc.order_id = @"1234_1234_124"; //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-    vc.name = @"블링\"블링's 마스카라";  // 커스텀 변수
-    vc.pg = @"danal"; // 결제할 PG사
-    vc.phone = @"010-1234-5678"; // 구매자 번호
-    vc.method = @"card"; // 결제수단
-    //    vc.account_expire_at = "2018-09-25" // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. 오늘 날짜보다 더 뒤(미래)여야 합니다 )
-    vc.params = customParams;
-    vc.user_info = userInfo;
-    vc.sendable = self; // 이벤트를 처리할 protocol receiver
-    
-    [self.navigationController presentViewController: vc animated: YES completion: nil]; // 결제창 modal controller 호출
+//    // 주문정보 - 실제 결제창에 반영되는 정보
+//    vc.price = 1000; // 결제할 금액
+//    vc.name = @"블링\"블링's 마스카라"; // 결제할 상품명
+//    vc.order_id = @"1234_1234_124"; //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+//    vc.name = @"블링\"블링's 마스카라";  // 커스텀 변수
+//    vc.pg = @"danal"; // 결제할 PG사
+//    vc.phone = @"010-1234-5678"; // 구매자 번호
+//    vc.method = @"card"; // 결제수단
+//    //    vc.account_expire_at = "2018-09-25" // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. 오늘 날짜보다 더 뒤(미래)여야 합니다 )
+//    vc.params = customParams;
+//    vc.user_info = userInfo;
+//    vc.sendable = self; // 이벤트를 처리할 protocol receiver
+//
+//    [self.navigationController presentViewController: vc animated: YES completion: nil]; // 결제창 modal controller 호출
     //    [self.view addSubview:vc.view];
 }
 
@@ -115,7 +122,7 @@
 
 - (void)onClose {
     NSLog(@"onClose");
-    [vc dismiss];
+    [Bootpay dismiss];
 }
 
 - (void)onConfirm:(NSDictionary<NSString *,id> * _Nonnull)data {
@@ -125,9 +132,9 @@
     
     //  재고가 있어, 결제를 원할 경우
     if (true) {
-        [vc transactionConfirm: data];
+        [Bootpay transactionConfirm: data];
     } else {
-        [vc removePaymentWindow];
+        [Bootpay dismiss];
     }
 }
 

@@ -11,9 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NativeController : UIViewController {
-    BootpayController *vc;
-}
+@interface NativeController : UIViewController  
 
 @end
 

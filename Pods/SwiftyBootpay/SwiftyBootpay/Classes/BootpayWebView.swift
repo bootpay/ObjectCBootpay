@@ -19,15 +19,16 @@ import WebKit
     @objc(onDone:) func onDone(data: [String: Any])
 }
 
-class BootpayWebView: UIView {
+@objc class BootpayWebView: UIView {
     var wv: WKWebView!
-    final let BASE_URL = "https://inapp.bootpay.co.kr/2.1.1/production.html"
+    final let BASE_URL = "https://inapp.bootpay.co.kr/3.0.4/production.html"
     final let bridgeName = "Bootpay_iOS"
     var firstLoad = false
     var sendable: BootpayRequestProtocol?
     var bootpayScript = ""
     var parentController: BootpayController!
     func bootpayRequest(_ script: String) {
+        HTTPCookieStorage.shared.cookieAcceptPolicy = HTTPCookie.AcceptPolicy.always  // 현대카드 등 쿠키설정 이슈 해결을 위해 필요
         let configuration = WKWebViewConfiguration()
         configuration.userContentController.add(self, name: bridgeName)
         wv = WKWebView(frame: self.bounds, configuration: configuration)
@@ -55,7 +56,7 @@ extension BootpayWebView {
     
     
     func registerAppId() {
-        doJavascript("window.BootPay.setApplicationId('\(BootpayAnalytics.sharedInstance.application_id)');")
+        doJavascript("window.BootPay.setApplicationId('\(Bootpay.sharedInstance.application_id)');")
     }
     
     internal func setDevice() {
@@ -63,16 +64,16 @@ extension BootpayWebView {
     }
     
     internal func setAnalytics() {
-        if BootpayAnalytics.sharedInstance.sk_time == 0 {
+        if Bootpay.sharedInstance.sk_time == 0 {
             NSLog("Bootpay Analytics Warning: setAnalytics() not Work!! Please session active in AppDelegate")
             return
         }
         
         doJavascript("window.BootPay.setAnalyticsData({"
-            + "sk: '\(BootpayAnalytics.sharedInstance.sk)', "
-            + "sk_time: \(BootpayAnalytics.sharedInstance.sk_time), "
-            + "time: \(BootpayAnalytics.sharedInstance.time), "
-            + "uuid: '\(BootpayAnalytics.sharedInstance.uuid)'"
+            + "sk: '\(Bootpay.sharedInstance.sk)', "
+            + "sk_time: \(Bootpay.sharedInstance.sk_time), "
+            + "time: \(Bootpay.sharedInstance.time), "
+            + "uuid: '\(Bootpay.sharedInstance.uuid)'"
             + "});")
     }
     
@@ -82,6 +83,8 @@ extension BootpayWebView {
 }
 
 extension BootpayWebView: WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler  {
+     
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if firstLoad == false {
             firstLoad = true
@@ -94,7 +97,8 @@ extension BootpayWebView: WKNavigationDelegate, WKUIDelegate, WKScriptMessageHan
     
     func isMatch(_ urlString: String, _ pattern: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let result = regex.matches(in: urlString, options: [], range: NSRange(location: 0, length: urlString.characters.count))
+//        let result = regex.matches(in: urlString, options: [], range: NSRange(location: 0, length: urlString.characters.count))
+        let result = regex.matches(in: urlString, options: [], range: NSRange(location: 0, length: urlString.count))
         return result.count > 0
     }
     
@@ -200,3 +204,5 @@ extension BootpayWebView: WKNavigationDelegate, WKUIDelegate, WKScriptMessageHan
         return nil
     }
 }
+
+

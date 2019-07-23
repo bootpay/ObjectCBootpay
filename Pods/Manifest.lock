@@ -7,7 +7,7 @@ PODS:
     - ObjectMapper (~> 3.4)
   - CryptoSwift (1.0.0)
   - ObjectMapper (3.5.1)
-  - SwiftyBootpay (3.0.47):
+  - SwiftyBootpay (3.0.48):
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  SwiftyBootpay: 8c057bb411ea0d840e5b552e733b07f0b5fb3b77
+  SwiftyBootpay: d7cc6a6c9642df38dc2a8acca016971edfd7176a
 
 PODFILE CHECKSUM: a353e74b50c321563f6353bfc225fac060351600
 

@@ -72,6 +72,8 @@
     item2.cat2 = @"여\"성'상의";
     item2.cat3 = @"블라우스";
     
+    NSArray *items = @[item1, item2];
+    
     // 커스텀 변수로, 서버에서 해당 값을 그대로 리턴 받음
     NSMutableDictionary *customParams = [[NSMutableDictionary alloc] init];
     [customParams setValue: @"value12" forKey: @"callbackParam1"];
@@ -84,31 +86,20 @@
     bootUser.area = @"서울";
     bootUser.phone = @"010-1234-5678";
     
-    BootpayRequest *request = [[BootpayRequest alloc] init];
-    request.price = 1000;
-    request.name = @"블링블링's 마스카라";
-    request.order_id = @"1234_1234_1234";
-    request.params = customParams;
-//    request.pg = BootpayMethod
-    request.pg = BootpayPG.DANAL;
-    request.method = BootpayMethod.CARD;
-    request.ux = BootpayUX.PG_DIALOG;
+    BootpayPayload *payload = [[BootpayPayload alloc] init];
+    payload.price = 1000;
+    payload.name = @"블링블링's 마스카라";
+    payload.order_id = @"1234_1234_1234";
+    payload.params = customParams; 
+    payload.pg = BootpayPG.DANAL;
+    payload.method = BootpayMethod.CARD;
+    payload.ux = BootpayUX.PG_DIALOG;
     
-//    // 주문정보 - 실제 결제창에 반영되는 정보
-//    vc.price = 1000; // 결제할 금액
-//    vc.name = @"블링\"블링's 마스카라"; // 결제할 상품명
-//    vc.order_id = @"1234_1234_124"; //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-//    vc.name = @"블링\"블링's 마스카라";  // 커스텀 변수
-//    vc.pg = @"danal"; // 결제할 PG사
-//    vc.phone = @"010-1234-5678"; // 구매자 번호
-//    vc.method = @"card"; // 결제수단
-//    //    vc.account_expire_at = "2018-09-25" // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. 오늘 날짜보다 더 뒤(미래)여야 합니다 )
-//    vc.params = customParams;
-//    vc.user_info = userInfo;
-//    vc.sendable = self; // 이벤트를 처리할 protocol receiver
-//
-//    [self.navigationController presentViewController: vc animated: YES completion: nil]; // 결제창 modal controller 호출
-    //    [self.view addSubview:vc.view];
+    
+    BootpayExtra *bootExtra = [[BootpayExtra alloc] init];
+    bootExtra.quotas = @[ @0, @2, @3];
+    
+    [Bootpay request_objc:self :self :payload :bootUser :items :bootExtra :nil :nil :nil];
 }
 
 - (void) onError {
